@@ -141,17 +141,19 @@ $SPARK_HOME/bin/spark-submit --class org.apache.spark.examples.SparkPi \
 $SPARK_HOME/bin/spark-shell --master spark://node1:7077
 ```
 2. Prepare small test file lorem.txt with the following content:
+```
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
 It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
 It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+```
 
 3. Load the file in HDFS and check if it's there
 ```
 hadoop fs -put ./lorem.txt ./
 hadoop fs -ls
 ```
-4. # Test Spark in the scala shell
+4. Test Spark in the scala shell
 ```
 val textFile = sc.textFile("lorem.txt")
 textFile.count() # Should get the result: res0: Long = 4
