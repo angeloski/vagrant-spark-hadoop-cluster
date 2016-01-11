@@ -1,0 +1,8 @@
+# Things to ignore:
+
+post_provissioning_steps.txt
+.vagrant/
+resources/hadoop-*
+resources/spark-*
+resources/jdk-*
+.DS_Store
