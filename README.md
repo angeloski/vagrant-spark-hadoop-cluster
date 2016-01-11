@@ -136,7 +136,6 @@ $SPARK_HOME/bin/spark-submit --class org.apache.spark.examples.SparkPi \
 	
 ### Test Spark using Shell
 1. Start the Spark shell using the following command. Try NOT to run this command on the slave nodes.
-
 ```
 $SPARK_HOME/bin/spark-shell --master spark://node1:7077
 ```
@@ -147,7 +146,6 @@ Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, wh
 It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
 It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 ```
-
 3. Load the file in HDFS and check if it's there
 ```
 hadoop fs -put ./lorem.txt ./
