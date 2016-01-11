@@ -21,9 +21,8 @@ Based on this [GutHub repo](https://github.com/vangj/vagrant-hadoop-2.4.1-spark-
 6. Download [spark-1.6.0-bin-hadoop2.6.tgz](http://spark.apache.org/downloads.html) into the /resources directory
 7. Download [jdk-8u65-linux-i586.tar.gz](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) into the /resources directory
 8. Run ```vagrant up``` to create the VM.
-9. Run ```vagrant up``` to create the VM.
-10. Run ```vagrant status``` to check the status of your VM.
-11. Run ```vagrant destroy``` when you want to destroy and get rid of the VM.
+9. Run ```vagrant status``` to check the status of your VM.
+10. Run ```vagrant destroy``` when you want to destroy and get rid of the VM.
 
 Some gotcha's.
 
@@ -135,6 +134,7 @@ $SPARK_HOME/bin/spark-submit --class org.apache.spark.examples.SparkPi \
 ```
 	
 ### Test Spark using Shell
+
 1. Start the Spark shell using the following command. Try NOT to run this command on the slave nodes.
 ```
 $SPARK_HOME/bin/spark-shell --master spark://node1:7077
