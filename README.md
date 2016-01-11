@@ -1,4 +1,4 @@
-vagrant-hadoop-2.4.1-spark-1.0.1
+vagrant-spark-hadoop-cluster
 ================================
 
 # Introduction
