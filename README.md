@@ -161,10 +161,10 @@ textFile.first() # Should get the result: res1: String = "Lorem Ipsum is simply 
 # Web UI
 You can check the following URLs to monitor the Hadoop daemons.
 
-1. [NameNode] (http://10.211.55.101:50070/dfshealth.html)
-2. [ResourceManager] (http://10.211.55.102:8088/cluster)
-3. [JobHistory] (http://10.211.55.102:19888/jobhistory)
-4. [Spark] (http://10.211.55.101:8080)
+1. [NameNode](http://10.211.55.101:50070/dfshealth.html)
+2. [ResourceManager](http://10.211.55.102:8088/cluster)
+3. [JobHistory](http://10.211.55.102:19888/jobhistory)
+4. [Spark](http://10.211.55.101:8080)
 
 # Vagrant boxes
 A list of available Vagrant boxes is shown at http://www.vagrantbox.es. 
