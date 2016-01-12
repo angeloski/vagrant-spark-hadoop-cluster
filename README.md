@@ -22,15 +22,9 @@ Based on this [GutHub repo](https://github.com/vangj/vagrant-hadoop-2.4.1-spark-
 7. Download [jdk-8u65-linux-i586.tar.gz](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) into the /resources directory
 8. Run ```vagrant up``` to create the VM.
 9. Run ```vagrant status``` to check the status of your VM.
-10. Run ```vagrant destroy``` when you want to destroy and get rid of the VM.
+10. Use ```vagrant suspend``` to suspend your VM and free resources. Use ```vagrant up``` to start it again.
+11. Run ```vagrant destroy``` when you want to destroy and get rid of the VM.
 
-Some gotcha's.
-
-1. Make sure you download Vagrant v1.4.3 or higher.
-2. Make sure when you clone this project, you preserve the Unix/OSX end-of-line (EOL) characters. The scripts will fail with Windows EOL characters.
-3. Make sure you have 4Gb of free memory for the VM. You may change the Vagrantfile to specify smaller memory requirements.
-4. This project has NOT been tested with the VMWare provider for Vagrant.
-5. You may change the script (common.sh) to point to a different location for Hadoop and Spark to be downloaded from. See next section for more details.
 
 # Modifying scripts for new Spark/Hadoop versions and adapting to your needs
 
@@ -78,26 +72,6 @@ You can make the VM setup MUCH faster if you pre-download the Hadoop, Spark, and
 3. [/resources/jdk-8u65-linux-i586.tar.gz](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 
 The setup script will automatically detect if these files (with precisely the same names) exist and use them instead. If you are using slightly different versions, you will have to modify the script accordingly.
-
-# Post Provisioning
-After you have provisioned the cluster, you need to run some commands to initialize your Hadoop cluster. Note, you need to be root to complete these post-provisioning steps. (Type in "su" and the password is "vagrant"). 
-
-SSH into node1 and issue the following command.
-
-1. $HADOOP_PREFIX/bin/hdfs namenode -format myhadoop
-
-## Start Hadoop Daemons (HDFS + YARN)
-SSH into node1 and issue the following commands to start HDFS.
-
-1. $HADOOP_PREFIX/sbin/hadoop-daemon.sh --config $HADOOP_CONF_DIR --script hdfs start namenode
-2. $HADOOP_PREFIX/sbin/hadoop-daemons.sh --config $HADOOP_CONF_DIR --script hdfs start datanode
-
-SSH into node2 and issue the following commands to start YARN.
-
-1. $HADOOP_YARN_HOME/sbin/yarn-daemon.sh --config $HADOOP_CONF_DIR start resourcemanager
-2. $HADOOP_YARN_HOME/sbin/yarn-daemons.sh --config $HADOOP_CONF_DIR start nodemanager
-3. $HADOOP_YARN_HOME/sbin/yarn-daemon.sh start proxyserver --config $HADOOP_CONF_DIR
-4. $HADOOP_PREFIX/sbin/mr-jobhistory-daemon.sh start historyserver --config $HADOOP_CONF_DIR
 
 ### Test YARN
 Run the following command to make sure you can run a MapReduce job.
@@ -174,15 +148,3 @@ The project is a fork of [Jee Vang's vagrant project](https://github.com/vangj/v
 A similar project which only sets up a cluster of 4 nodes without Spark/Hadoop is [this Binh Nguyen's project](https://github.com/ngbinh/spark-vagrant).
 A basic tutorial for setting up Vagrant on a single VM can be found [here](http://thegrimmscientist.com/2014/12/01/vagrant-tutorial-spark-in-a-vm/).
 
-# Copyright Stuff
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
