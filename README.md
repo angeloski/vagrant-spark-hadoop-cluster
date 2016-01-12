@@ -27,6 +27,9 @@ Based on this [GutHub repo](https://github.com/vangj/vagrant-hadoop-2.4.1-spark-
 
 
 # Testing the configuration
+Connect to node1 with:   
+```vagrant ssh node1```   
+
 Make sure you run these tests with root privileges: type in "su" and the password is "vagrant".
 
 ### Test YARN
