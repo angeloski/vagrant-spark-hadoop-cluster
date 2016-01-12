@@ -56,8 +56,8 @@ Based on this [GutHub repo](https://github.com/vangj/vagrant-hadoop-2.4.1-spark-
 
 5. /scripts/setup-centos-ssh.sh
     * To modify the version of sshpass to use, change the following lines within the function installSSHPass():    
-    ```line 23: wget http://pkgs.repoforge.org/sshpass/sshpass-1.05-1.el6.rf.i686.rpm   
-    line 24: rpm -ivh sshpass-1.05-1.el6.rf.i686.rpm```
+    ```line 23: wget http://pkgs.repoforge.org/sshpass/sshpass-1.05-1.el6.rf.i686.rpm```    
+    ```line 24: rpm -ivh sshpass-1.05-1.el6.rf.i686.rpm```   
 
 6. /scripts/setup-spark.sh
     * To modify the version of Spark to be used, if different from default version (built for Hadoop2.6), change the version suffix in the following  line:   
