@@ -73,8 +73,11 @@ You can make the VM setup MUCH faster if you pre-download the Hadoop, Spark, and
 
 The setup script will automatically detect if these files (with precisely the same names) exist and use them instead. If you are using slightly different versions, you will have to modify the script accordingly.
 
+# Testing the configuration
+Make sure you run these tests with root privileges: type in "su" and the password is "vagrant".
+
 ### Test YARN
-Run the following command to make sure you can run a MapReduce job.
+Run the following command to make sure you can run a MapReduce job. 
 
 ```
 yarn jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.6.3.jar pi 2 100
