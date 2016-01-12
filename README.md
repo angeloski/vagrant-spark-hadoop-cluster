@@ -83,11 +83,6 @@ Run the following command to make sure you can run a MapReduce job.
 yarn jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.6.3.jar pi 2 100
 ```
 
-## Start Spark in Standalone Mode
-SSH into node1 and issue the following command.
-
-1. $SPARK_HOME/sbin/start-all.sh
-
 ### Test Spark on YARN
 You can test if Spark can run on YARN by issuing the following command. Try NOT to run this command on the slave nodes.
 
@@ -113,27 +108,27 @@ $SPARK_HOME/bin/spark-submit --class org.apache.spark.examples.SparkPi \
 ### Test Spark using Shell
 
 1. Start the Spark shell using the following command. Try NOT to run this command on the slave nodes.
-```
-$SPARK_HOME/bin/spark-shell --master spark://node1:7077
-```
+    ```
+    $SPARK_HOME/bin/spark-shell --master spark://node1:7077
+    ```
 2. Prepare small test file lorem.txt with the following content:
-```
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
-It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-```
+    ```
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+    It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+    It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+    ```
 3. Load the file in HDFS and check if it's there
-```
-hadoop fs -put ./lorem.txt ./
-hadoop fs -ls
-```
+    ```
+    hadoop fs -put ./lorem.txt ./
+    hadoop fs -ls
+    ```
 4. Test Spark in the scala shell
-```
-val textFile = sc.textFile("lorem.txt")
-textFile.count() # Should get the result: res0: Long = 4
-textFile.first() # Should get the result: res1: String = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-```
+    ```
+    val textFile = sc.textFile("lorem.txt")
+    textFile.count() # Should get the result: res0: Long = 4
+    textFile.first() # Should get the result: res1: String = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+    ```
 
 # Web UI
 You can check the following URLs to monitor the Hadoop daemons.
