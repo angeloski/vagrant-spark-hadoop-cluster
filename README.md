@@ -49,9 +49,9 @@ Based on this [GutHub repo](https://github.com/vangj/vagrant-hadoop-2.4.1-spark-
     ```line 15: SPARK_MIRROR_DOWNLOAD=../resources/spark-1.6.0-bin-hadoop2.6.tgz```   
 
 4. /scripts/setup-java.sh
-    * To install from Java downloaded locally in /resources directory, if different from default version (1.8.0_65), change the version in the following  line:
+    * To install from Java downloaded locally in /resources directory, if different from default version (1.8.0_65), change the version in the following  line:   
     ```line 18: ln -s /usr/local/jdk1.8.0_65 /usr/local/java```
-    * To modify version of Java to be installed from remote location on the web, change the version in the following line:
+    * To modify version of Java to be installed from remote location on the web, change the version in the following line:   
     ```line 12: yum install java-1.8.0-openjdk -y```
 
 5. /scripts/setup-centos-ssh.sh
@@ -124,11 +124,10 @@ $SPARK_HOME/bin/spark-submit --class org.apache.spark.examples.SparkPi \
     hadoop fs -ls
     ```
 4. Test Spark in the scala shell   
-    * ```
-    val textFile = sc.textFile("lorem.txt")   
-    textFile.count() # Should get the result: res0: Long = 4    
-    textFile.first() # Should get the result: res1: String = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "    
-    ```
+    * 
+    ```val textFile = sc.textFile("lorem.txt")```      
+    ```textFile.count() # Should get the result: res0: Long = 4```        
+    ```textFile.first() # Should get the result: res1: String = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "```       
 
 # Web UI
 You can check the following URLs to monitor the Hadoop daemons.
