@@ -31,22 +31,22 @@ Based on this [GutHub repo](https://github.com/vangj/vagrant-hadoop-2.4.1-spark-
 1. You could use a different vagrant box. Here is the [list of available Vagrant boxes](http://www.vagrantbox.es).
 
 2. ./Vagrantfile
-    * To add/remove slaves, change the number of nodes:
+    * To add/remove slaves, change the number of nodes:   
     ```line 5: numNodes = 4```
-    * To modify VM memory change the following line:
+    * To modify VM memory change the following line:   
     ```line 13: v.customize ["modifyvm", :id, "--memory", "2048"]```
 
 3. /scripts/common.sh
-    * To use a different version of Java, change the following line depending on the version you downloaded to /resources directory.
+    * To use a different version of Java, change the following line depending on the version you downloaded to /resources directory.   
     ```line 4: JAVA_ARCHIVE=jdk-8u25-linux-i586.tar.gz```
-    * To use a different version of Hadoop you've already downloaded to /resources directory, change the following line:
+    * To use a different version of Hadoop you've already downloaded to /resources directory, change the following line:   
     ```line 8: HADOOP_VERSION=hadoop-2.6.3```
-    * To use a different version of Hadoop to be downloaded, change the remote URL in the following line:
+    * To use a different version of Hadoop to be downloaded, change the remote URL in the following line:   
     ```line 10: HADOOP_MIRROR_DOWNLOAD=http://apache.crihan.fr/dist/hadoop/common/stable/hadoop-2.6.3.tar.gz```
-    * To use a different version of Spark, change the following lines:
-    ```line 13: SPARK_VERSION=spark-1.6.0```
-    ```line 14: SPARK_ARCHIVE=$SPARK_VERSION-bin-hadoop2.6.tgz```
-    ```line 15: SPARK_MIRROR_DOWNLOAD=../resources/spark-1.6.0-bin-hadoop2.6.tgz```
+    * To use a different version of Spark, change the following lines:   
+    ```line 13: SPARK_VERSION=spark-1.6.0```   
+    ```line 14: SPARK_ARCHIVE=$SPARK_VERSION-bin-hadoop2.6.tgz```   
+    ```line 15: SPARK_MIRROR_DOWNLOAD=../resources/spark-1.6.0-bin-hadoop2.6.tgz```   
 
 4. /scripts/setup-java.sh
     * To install from Java downloaded locally in /resources directory, if different from default version (1.8.0_65), change the version in the following  line:
@@ -55,12 +55,12 @@ Based on this [GutHub repo](https://github.com/vangj/vagrant-hadoop-2.4.1-spark-
     ```line 12: yum install java-1.8.0-openjdk -y```
 
 5. /scripts/setup-centos-ssh.sh
-    * To modify the version of sshpass to use, change the following lines within the function installSSHPass():
-    ```line 23: wget http://pkgs.repoforge.org/sshpass/sshpass-1.05-1.el6.rf.i686.rpm
+    * To modify the version of sshpass to use, change the following lines within the function installSSHPass():    
+    ```line 23: wget http://pkgs.repoforge.org/sshpass/sshpass-1.05-1.el6.rf.i686.rpm   
     line 24: rpm -ivh sshpass-1.05-1.el6.rf.i686.rpm```
 
 6. /scripts/setup-spark.sh
-    *To modify the version of Spark to be used, if different from default version (built for Hadoop2.6), change the version suffix in the following  line:
+    * To modify the version of Spark to be used, if different from default version (built for Hadoop2.6), change the version suffix in the following  line:   
     ```line 32: ln -s /usr/local/$SPARK_VERSION-bin-hadoop2.6 /usr/local/spark```
 
 
@@ -107,27 +107,27 @@ $SPARK_HOME/bin/spark-submit --class org.apache.spark.examples.SparkPi \
 	
 ### Test Spark using Shell
 
-1. Start the Spark shell using the following command. Try NOT to run this command on the slave nodes.
-    *```
+1. Start the Spark shell using the following command. Try NOT to run this command on the slave nodes.   
+    * ```
     $SPARK_HOME/bin/spark-shell --master spark://node1:7077
     ```
-2. Prepare small test file lorem.txt with the following content:
-    *```
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-    It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
-    It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+2. Prepare small test file lorem.txt with the following content:   
+    * ```
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry.    
+    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.     
+    It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.     
+    It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.    
     ```
-3. Load the file in HDFS and check if it's there
-    *```
-    hadoop fs -put ./lorem.txt ./
+3. Load the file in HDFS and check if it's there   
+    * ```
+    hadoop fs -put ./lorem.txt ./   
     hadoop fs -ls
     ```
-4. Test Spark in the scala shell
-    *```
-    val textFile = sc.textFile("lorem.txt")
-    textFile.count() # Should get the result: res0: Long = 4
-    textFile.first() # Should get the result: res1: String = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+4. Test Spark in the scala shell   
+    * ```
+    val textFile = sc.textFile("lorem.txt")   
+    textFile.count() # Should get the result: res0: Long = 4    
+    textFile.first() # Should get the result: res1: String = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "    
     ```
 
 # Web UI
