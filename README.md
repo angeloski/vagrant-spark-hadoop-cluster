@@ -75,10 +75,10 @@ $SPARK_HOME/bin/spark-submit --class org.apache.spark.examples.SparkPi \
     It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.    
     ```
 3. Load the file in HDFS and check if it's there   
-    * ```
-    hadoop fs -put ./lorem.txt ./   
-    hadoop fs -ls
-    ```
+    * 
+    ```hadoop fs -put ./lorem.txt ./```          
+    ```hadoop fs -ls```   
+
 4. Test Spark in the scala shell   
     * 
     ```val textFile = sc.textFile("lorem.txt")```      
