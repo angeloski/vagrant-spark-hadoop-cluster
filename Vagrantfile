@@ -1,6 +1,9 @@
 Vagrant.require_version ">= 1.4.3"
 VAGRANTFILE_API_VERSION = "2"
 
+HOST_SYNCED_FOLDER = "~/DH/dhbd_spark_scripts/"
+NODE1_SYNCED_FOLDER = "/code/dhbd_spark_scripts/"
+
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	numNodes = 4
 	r = numNodes..1
@@ -47,6 +50,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 				s.args = "-s 3 -t #{numNodes}"
 			end
 
+			# Copy the .boto file (AWS credentials)
+			node.vm.provision "shell", inline: "cp /vagrant/.boto /home/vagrant/"
+
 			# Initialize the Hadoop cluster, start Hadoop daemons
 			if i == 1
 				node.vm.provision "shell", 
@@ -62,6 +68,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 				node.vm.provision "shell", 
 					inline: "$SPARK_HOME/sbin/start-all.sh",
 					privileged: true
+				# Create a synced folder with the host machine
+				node.vm.synced_folder HOST_SYNCED_FOLDER, NODE1_SYNCED_FOLDER,
+					create: true
 			end
 			# Start YARN
 			if i == 2

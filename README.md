@@ -20,10 +20,11 @@ Based on this [GutHub repo](https://github.com/vangj/vagrant-hadoop-2.4.1-spark-
 5. Download [hadoop-2.6.3.tar.gz](http://www.apache.org/dyn/closer.cgi/hadoop/common/hadoop-2.6.3/hadoop-2.6.3.tar.gz) into the /resources directory
 6. Download [spark-1.6.0-bin-hadoop2.6.tgz](http://spark.apache.org/downloads.html) into the /resources directory
 7. Download [jdk-8u65-linux-i586.tar.gz](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) into the /resources directory
-8. Run ```vagrant up``` to create the VM.
-9. Run ```vagrant status``` to check the status of your VM.
-10. Use ```vagrant suspend``` to suspend your VM and free resources. Use ```vagrant up``` to start it again.
-11. Run ```vagrant destroy``` when you want to destroy and get rid of the VM.
+8. Add your AWS credentials in the ```vagrant-spark-hadoop-cluster/.boto-template``` file, and rename it to ```.boto```
+9. Run ```vagrant up``` to create the VM.
+10. Run ```vagrant status``` to check the status of your VM.
+11. Use ```vagrant suspend``` to suspend your VM and free resources. Use ```vagrant up``` to start it again.
+12. Run ```vagrant destroy``` when you want to destroy and get rid of the VM.
 
 
 # Testing the configuration
@@ -147,4 +148,7 @@ A list of available Vagrant boxes is shown at http://www.vagrantbox.es.
 The project is a fork of [Jee Vang's vagrant project](https://github.com/vangj/vagrant-hadoop-2.4.1-spark-1.0.1). 
 A similar project which only sets up a cluster of 4 nodes without Spark/Hadoop is [this Binh Nguyen's project](https://github.com/ngbinh/spark-vagrant).
 A basic tutorial for setting up Vagrant on a single VM can be found [here](http://thegrimmscientist.com/2014/12/01/vagrant-tutorial-spark-in-a-vm/).
+
+# To Do
+1. Make sure each Spark project has dependencies in a requirements file, and install those dependencies during VM setup.
 
