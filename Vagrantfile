@@ -52,6 +52,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
 			# Copy the .boto file (AWS credentials)
 			node.vm.provision "shell", inline: "cp /vagrant/.boto /home/vagrant/"
+			node.vm.provision "shell", inline: "cp /vagrant/.boto /root/"
 
 			# Initialize the Hadoop cluster, start Hadoop daemons
 			if i == 1
