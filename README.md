@@ -94,6 +94,7 @@ You can check the following URLs to monitor the Hadoop daemons.
 2. [ResourceManager](http://10.211.55.102:8088/cluster)
 3. [JobHistory](http://10.211.55.102:19888/jobhistory)
 4. [Spark](http://10.211.55.101:8080)
+5. When running a Spark job, it can be monitored at the [Spark Web Interface](http://10.211.55.101:4040/jobs/)
 
 # Make the VMs setup faster
 You can make the VM setup MUCH faster if you pre-download the Hadoop, Spark, and Oracle JDK into the /resources directory.
