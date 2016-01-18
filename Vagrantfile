@@ -2,7 +2,7 @@ Vagrant.require_version ">= 1.4.3"
 VAGRANTFILE_API_VERSION = "2"
 
 HOST_SYNCED_FOLDER = "~/DH/dhbd_spark_scripts/"
-NODE1_SYNCED_FOLDER = "/code/dhbd_spark_scripts/"
+NODE_SYNCED_FOLDER = "/code/dhbd_spark_scripts/"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	numNodes = 4
@@ -54,6 +54,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 			node.vm.provision "shell", inline: "cp /vagrant/.boto /home/vagrant/"
 			node.vm.provision "shell", inline: "cp /vagrant/.boto /root/"
 
+			# Create a synced folder with the host machine
+			node.vm.synced_folder HOST_SYNCED_FOLDER, NODE_SYNCED_FOLDER,
+				create: true
+
+			# Install project requirements.txt file to all nodes
+			node.vm.provision "shell", inline: "pip install -r" + NODE_SYNCED_FOLDER + "/requirements.txt"
+
 			# Initialize the Hadoop cluster, start Hadoop daemons
 			if i == 1
 				node.vm.provision "shell", 
@@ -69,9 +76,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 				node.vm.provision "shell", 
 					inline: "$SPARK_HOME/sbin/start-all.sh",
 					privileged: true
-				# Create a synced folder with the host machine
-				node.vm.synced_folder HOST_SYNCED_FOLDER, NODE1_SYNCED_FOLDER,
-					create: true
 			end
 			# Start YARN
 			if i == 2

@@ -21,11 +21,12 @@ Based on this [GutHub repo](https://github.com/vangj/vagrant-hadoop-2.4.1-spark-
 6. Download [spark-1.6.0-bin-hadoop2.6.tgz](http://spark.apache.org/downloads.html) into the /resources directory
 7. Download [jdk-8u65-linux-i586.tar.gz](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) into the /resources directory
 8. Add your AWS credentials in the ```vagrant-spark-hadoop-cluster/.boto-template``` file, and rename it to ```.boto```
-9. In the Vagrantfile, edit the values of the ```HOST_SYNCED_FOLDER``` and ```NODE1_SYNCED_FOLDER```. They should hold the absoluth paths of your Spark code on the host machine and on node1. These folders will be synced between the host machine and node1.
-10. Run ```vagrant up``` to create the VM.
-11. Run ```vagrant status``` to check the status of your VM.
-12. Use ```vagrant suspend``` to suspend your VM and free resources. Use ```vagrant up``` to start it again.
-13. Run ```vagrant destroy``` when you want to destroy and get rid of the VM.
+9. In the Vagrantfile, edit the values of the ```HOST_SYNCED_FOLDER``` and ```NODE_SYNCED_FOLDER```. They should hold the absoluth paths of your Spark code on the host machine and on the nodes. These folders will be synced between the host machine and each node.
+10. The script installs the project dependiencies on all nodes. Make sure you have a ```requirements.txt``` file in the HOST_SYNCED_FOLDER.
+11. Run ```vagrant up``` to create the VM.
+12. Run ```vagrant status``` to check the status of your VM.
+13. Use ```vagrant suspend``` to suspend your VM and free resources. Use ```vagrant up``` to start it again.
+14. Run ```vagrant destroy``` when you want to destroy and get rid of the VM.
 
 
 # Testing the configuration

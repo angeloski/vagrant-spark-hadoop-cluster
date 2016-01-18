@@ -11,10 +11,7 @@ function disableFirewall {
 function installDependencies {
 	yum install epel-release -y
 	yum install -y python-pip -y
-	pip install argparse
 	yum install python-devel -y
-	pip install ujson
-	pip install boto
 }
 
 echo "setup centos"
